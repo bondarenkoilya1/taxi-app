@@ -4,15 +4,10 @@ import PropTypes from "prop-types";
 
 import { InputStyled } from "./styled";
 
-export const Input = ({ className, name }) => {
-  return <InputStyled name={name} className={`input-reset ${className}`} />;
+export const Input = ({ name, ...attrs }) => {
+  return <InputStyled name={name} {...attrs} />;
 };
 
 Input.propTypes = {
-  className: PropTypes.string,
   name: PropTypes.string.isRequired
-};
-
-Input.defaultProps = {
-  className: ""
 };

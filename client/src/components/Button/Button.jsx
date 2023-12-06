@@ -4,20 +4,14 @@ import PropTypes from "prop-types";
 
 import { ButtonStyled } from "./styled";
 
-export const Button = ({ children, className, ...attrs }) => {
-  return (
-    <ButtonStyled className={`button-reset ${className}`} {...attrs}>
-      {children}
-    </ButtonStyled>
-  );
+export const Button = ({ children, ...attrs }) => {
+  return <ButtonStyled {...attrs}>{children}</ButtonStyled>;
 };
 
 Button.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  children: PropTypes.node
 };
 
 Button.defaultProps = {
-  children: null,
-  className: ""
+  children: null
 };

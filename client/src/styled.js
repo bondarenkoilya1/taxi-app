@@ -1,7 +1,6 @@
-import styled, { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
-
-const colors = ``;
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import emotionReset from "emotion-reset";
 
 const variables = `
 	:root {
@@ -10,29 +9,25 @@ const variables = `
 	}
 `;
 
-const fonts = ``;
-
-export const GlobalStyle = createGlobalStyle`
-	${reset}
-	${colors}
-	${variables}
-	${fonts}
+export const GlobalStyle = css`
+  ${emotionReset}
+  ${variables}
 
 	html {
-		box-sizing: border-box;
-	}
+    box-sizing: border-box;
+  }
 
-	*,
-	*::before,
-	*::after {
-		box-sizing: inherit;
-		margin: 0;
-		padding: 0;
-	}
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
 
-	#root {
-		font-family: var(--font-family)
-	}
+  #root {
+    font-family: var(--font-family);
+  }
 `;
 
 export const ContainerStyled = styled.div`

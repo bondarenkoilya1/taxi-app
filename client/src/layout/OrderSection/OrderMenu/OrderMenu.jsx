@@ -1,13 +1,22 @@
 import React from "react";
 
-import { OrderMenuInput, OrderMenuInputGroup, OrderMenuStyled } from "./styled";
+import { AutocompleteComponent } from "../../../components/Autocomplete";
+import { OrderMenuInputGroup, OrderMenuStyled } from "./styled";
 
 export const OrderMenu = () => {
   return (
     <OrderMenuStyled>
       <OrderMenuInputGroup>
-        <OrderMenuInput name="address" placeholder="Address" />
-        <OrderMenuInput name="from" placeholder="Where to go" />
+        <AutocompleteComponent
+          styles={{ width: 300, mb: 3 }}
+          label="Pick up location"
+          placeholder="Kyiv, Obolon st."
+        />
+        <AutocompleteComponent
+          styles={{ width: 300 }}
+          label="Where to go"
+          placeholder="Nova Poshta №59, Kyiv"
+        />
       </OrderMenuInputGroup>
     </OrderMenuStyled>
   );

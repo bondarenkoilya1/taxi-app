@@ -28,6 +28,10 @@ export const GlobalStyle = css`
   #root {
     font-family: var(--font-family);
   }
+
+  .MuiAutocomplete-noOptions {
+    display: none;
+  }
 `;
 
 export const ContainerStyled = styled.div`

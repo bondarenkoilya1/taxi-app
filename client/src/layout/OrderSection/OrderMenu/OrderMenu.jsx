@@ -1,6 +1,7 @@
 import React from "react";
 
-import { AutocompleteComponent } from "../../../components/Autocomplete";
+import { AutocompleteComponent } from "@components/Autocomplete";
+
 import { OrderMenuInputGroup, OrderMenuStyled } from "./styled";
 
 export const OrderMenu = () => {

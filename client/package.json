@@ -41,6 +41,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@emotion/babel-plugin": "^11.11.0",
     "@rsbuild/core": "^0.4.8",
+    "@rsbuild/plugin-image-compress": "^0.4.8",
     "@rsbuild/plugin-react": "^0.4.8",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",

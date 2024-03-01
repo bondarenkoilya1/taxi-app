@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { Order } from "../pages";
+import { Order } from "@pages";
 
 export const Layout = () => {
   return (

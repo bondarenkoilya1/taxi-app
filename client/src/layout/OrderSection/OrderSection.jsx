@@ -1,8 +1,8 @@
 import React from "react";
 
+import { GOOGLE_MAP } from "@config";
 import { useLoadScript } from "@react-google-maps/api";
 
-import { GOOGLE_MAP } from "../../config";
 import { OrderMap, OrderMenu } from "./";
 import { OrderSectionStyled, OrderSectionWrapper } from "./styled";
 

@@ -10,12 +10,12 @@ export const OrderMenu = () => {
         <AutocompleteComponent
           styles={{ width: 300, mb: 3 }}
           label="Pick up location"
-          placeholder="Kyiv, Obolon st."
+          placeholder="John Scottus Primary School"
         />
         <AutocompleteComponent
           styles={{ width: 300 }}
           label="Where to go"
-          placeholder="Nova Poshta №59, Kyiv"
+          placeholder="Dec Nolan Office"
         />
       </OrderMenuInputGroup>
     </OrderMenuStyled>

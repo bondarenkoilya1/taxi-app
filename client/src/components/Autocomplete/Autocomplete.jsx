@@ -11,7 +11,11 @@ export const AutocompleteComponent = ({ styles, label, placeholder }) => {
     value,
     setValue,
     suggestions: { status, data }
-  } = usePlacesAutocomplete();
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      componentRestrictions: { country: "irl" }
+    }
+  });
 
   const addressList = () => {
     if (status === "OK") {

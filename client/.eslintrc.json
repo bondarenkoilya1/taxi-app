@@ -7,11 +7,12 @@
     "jest": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 12,
+    "ecmaVersion": 2023,
     "sourceType": "module"
   },
   "settings": {
@@ -32,6 +33,7 @@
       {
         "groups": [["^react"], ["^antd"], ["^@?\\w"], ["@/(.*)"], ["^[./]"]]
       }
-    ]
+    ],
+    "react/react-in-jsx-scope": "off"
   }
 }

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { Libraries, useLoadScript } from "@react-google-maps/api";
+import { Libraries, useJsApiLoader } from "@react-google-maps/api";
 import { GOOGLE_MAP } from "config";
 // TODO: find a way to remove index
 import { MAP_MODES } from "constants/index";
@@ -36,7 +36,7 @@ export const OrderSection = () => {
     });
   };
 
-  const { isLoaded } = useLoadScript({
+  const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAP.API_KEY,
     id: GOOGLE_MAP.ID,
     libraries

@@ -1,1 +1,0 @@
-export { OrderMenu } from "./OrderMenu";

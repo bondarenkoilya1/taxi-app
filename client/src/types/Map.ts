@@ -12,9 +12,14 @@ export type MapModes = {
 
 export type MapModeValues = MapModes[keyof MapModes];
 
-export type MapProps = {
-  markers: Coordinates[];
-  onMarkerAdd: (coordinates: Coordinates) => void;
+type ModeProps = {
   mode: MapModeValues;
   toggleMode: () => void;
 };
+
+export type MapProps = {
+  markers: Coordinates[];
+  onMarkerAdd: (coordinates: Coordinates) => void;
+} & ModeProps;
+
+export type ChangeMapModeProps = ModeProps;

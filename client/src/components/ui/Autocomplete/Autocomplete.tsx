@@ -2,13 +2,14 @@ import React, { ChangeEvent } from "react";
 
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import type { AutocompleteProps } from "types";
+import type { AddressListProps, AutocompleteProps } from "types";
 import usePlacesAutocomplete from "use-places-autocomplete";
 
 export const AutocompleteComponent: React.FC<AutocompleteProps> = ({
   styles,
   label,
-  placeholder
+  placeholder,
+  componentRef
 }) => {
   const {
     ready,
@@ -21,29 +22,18 @@ export const AutocompleteComponent: React.FC<AutocompleteProps> = ({
     }
   });
 
-  const addressList = () => {
+  const addressList = (): AddressListProps[] => {
     if (status === "OK") {
-      return data.reduce((acc, { place_id, description }) => {
-        return [...acc, { label: description, key: place_id }];
-      }, []);
+      return data.map(({ place_id, description }) => ({
+        label: description,
+        key: place_id
+      }));
     }
 
     return [];
   };
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => setValue(target.value);
-
-  // ADD MARKERS DEPEND ON location chosen IN INPUT
-  // const handleSelect =
-  //   ({ description }) =>
-  //   () => {
-  //     setValue(description, false);
-
-  //     getGeocode({ address: description }).then((results) => {
-  //       const { lat, lng } = getLatLng(results[0]);
-  //       console.log("📍 MarkerProps: ", { lat, lng });
-  //     });
-  //   };
 
   return (
     <Autocomplete
@@ -59,6 +49,7 @@ export const AutocompleteComponent: React.FC<AutocompleteProps> = ({
           disabled={!ready}
           label={label}
           placeholder={placeholder}
+          inputRef={componentRef}
         />
       )}
     />

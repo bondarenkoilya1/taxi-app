@@ -1,3 +1,5 @@
+/// <reference types="@types/google.maps" />
+
 import type { Coordinates } from ".";
 
 export type MapData = {
@@ -20,6 +22,7 @@ type ModeProps = {
 export type MapProps = {
   markers: Coordinates[];
   onMarkerAdd: (coordinates: Coordinates) => void;
+  directionsResponse: google.maps.DirectionsResult | null;
 } & ModeProps;
 
 export type ChangeMapModeProps = ModeProps;

@@ -12,8 +12,11 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2023,
+    "ecmaVersion": "latest",
     "sourceType": "module"
+  },
+  "globals": {
+    "google": "readonly"
   },
   "settings": {
     "react": {
@@ -35,5 +38,13 @@
       }
     ],
     "react/react-in-jsx-scope": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    }
+  ]
 }

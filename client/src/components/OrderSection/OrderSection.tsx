@@ -1,9 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { Libraries, useJsApiLoader } from "@react-google-maps/api";
 import { GOOGLE_MAP } from "config";
-// TODO: find a way to remove index
-import { MAP_MODES } from "constants/index";
+import { MAP_MODES } from "constants";
 import type { MapModeValues } from "types/Map";
 import type { Coordinates } from "types/MarkerProps";
 
@@ -14,19 +13,21 @@ const libraries: Libraries = ["places"];
 
 export const OrderSection = () => {
   const [mode, setMode] = useState<MapModeValues>(MAP_MODES.MOVE);
-  const [markers, setMarkers] = useState([
-    { lat: 53.35, lng: -6.26 },
-    { lat: 53.45, lng: -6.26 },
-    { lat: 53.4, lng: -6.26 }
-  ]);
+  const [markers, setMarkers] = useState<Coordinates[]>([]);
+  const [directionsResponse, setDirectionsResponse] = useState<google.maps.DirectionsResult | null>(
+    null
+  );
+
+  const originRef = useRef<HTMLInputElement>(null);
+  const destinationRef = useRef<HTMLInputElement>(null);
 
   // TODO: Decide is it okay for users to remove markers that way
   if (markers.length > 2) {
     markers.shift();
   }
 
-  // eslint-disable-next-line no-unused-vars
-  const onMarkerAdd: (coordinates: Coordinates) => void = useCallback((coordinates) => {
+  // todo: Markers don't keep position
+  const onMarkerAdd = useCallback((coordinates: Coordinates) => {
     setMarkers((prevMarkers) => [...prevMarkers, coordinates]);
   }, []);
 
@@ -46,11 +47,52 @@ export const OrderSection = () => {
     return <div>Loading...</div>;
   }
 
+  // todo: bad code, many ifs
+  const calculateRoute = async () => {
+    if (!originRef.current || !destinationRef.current) {
+      return;
+    }
+
+    const origin = originRef.current.value;
+    const destination = destinationRef.current.value;
+
+    if (!origin || !destination) {
+      return;
+    }
+
+    const directionsService = new window.google.maps.DirectionsService();
+    const result = await directionsService.route({
+      origin,
+      destination,
+      travelMode: window.google.maps.TravelMode.DRIVING
+    });
+
+    setDirectionsResponse(result);
+  };
+
+  // todo: bad code, many ifs
+  const clearRoute = () => {
+    setDirectionsResponse(null);
+    if (originRef.current) originRef.current.value = "";
+    if (destinationRef.current) destinationRef.current.value = "";
+  };
+
   return (
     <OrderSectionStyled>
       <OrderSectionWrapper>
-        <OrderMenu />
-        <OrderMap markers={markers} onMarkerAdd={onMarkerAdd} mode={mode} toggleMode={toggleMode} />
+        <OrderMenu
+          originRef={originRef}
+          destinationRef={destinationRef}
+          calculateRoute={calculateRoute}
+          clearRoute={clearRoute}
+        />
+        <OrderMap
+          markers={markers}
+          onMarkerAdd={onMarkerAdd}
+          mode={mode}
+          toggleMode={toggleMode}
+          directionsResponse={directionsResponse}
+        />
       </OrderSectionWrapper>
     </OrderSectionStyled>
   );

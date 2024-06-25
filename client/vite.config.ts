@@ -11,7 +11,8 @@ export default defineConfig({
       config: "/src/config",
       layout: "/src/layout",
       types: "/src/types",
-      constants: "/src/constants"
+      constants: "/src/constants",
+      themes: "/src/themes"
     }
   }
 });

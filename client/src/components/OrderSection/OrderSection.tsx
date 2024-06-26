@@ -48,7 +48,7 @@ export const OrderSection = () => {
   }
 
   // todo: bad code, many ifs
-  const calculateRoute = async () => {
+  const setRoute = async () => {
     if (!originRef.current || !destinationRef.current) {
       return;
     }
@@ -71,7 +71,7 @@ export const OrderSection = () => {
   };
 
   // todo: bad code, many ifs
-  const clearRoute = () => {
+  const resetRoute = () => {
     setDirectionsResponse(null);
     if (originRef.current) originRef.current.value = "";
     if (destinationRef.current) destinationRef.current.value = "";
@@ -83,8 +83,8 @@ export const OrderSection = () => {
         <OrderMenu
           originRef={originRef}
           destinationRef={destinationRef}
-          calculateRoute={calculateRoute}
-          clearRoute={clearRoute}
+          setRoute={setRoute}
+          resetRoute={resetRoute}
         />
         <OrderMap
           markers={markers}

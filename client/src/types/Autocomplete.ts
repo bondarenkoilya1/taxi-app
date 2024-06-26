@@ -5,7 +5,7 @@ export type StyleAttributes = {
 };
 
 export type AutocompleteProps = {
-  styles: StyleAttributes;
+  styles?: StyleAttributes;
   label: string;
   placeholder: string;
   componentRef?: RefObject<HTMLInputElement>;

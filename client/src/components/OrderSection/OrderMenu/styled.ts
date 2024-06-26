@@ -5,7 +5,13 @@ export const OrderMenuStyled = styled.div`
   margin-right: 100px;
 `;
 
-export const OrderMenuInputGroup = styled.div`
+export const OrderMenuItemsGroup = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const OrderMenuButtonsGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 `;

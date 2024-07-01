@@ -1,10 +1,13 @@
 import React, { ChangeEvent } from "react";
+import usePlacesAutocomplete from "use-places-autocomplete";
 
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import type { AddressListProps, AutocompleteProps } from "types";
-import usePlacesAutocomplete from "use-places-autocomplete";
 
+import type { AddressListProps, AutocompleteProps } from "types";
+
+// todo: move to autocomplete props provided by library
+// todo: maybe move usage of usePlacesAutocomplete hook higher by hierarchy because of possible reusability
 export const AutocompleteComponent: React.FC<AutocompleteProps> = ({
   styles,
   label,

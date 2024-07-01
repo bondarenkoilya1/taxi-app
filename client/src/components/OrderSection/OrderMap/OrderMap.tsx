@@ -1,12 +1,16 @@
 import React, { useCallback } from "react";
 
 import { DirectionsRenderer, GoogleMap } from "@react-google-maps/api";
-import { Marker } from "components/ui/Marker";
+
+import { MapContainerStyled } from "./styled";
+
 import { MAP_MODES } from "constants/index";
+
+import { Marker } from "components/ui/Marker";
+
 import { type MapProps } from "types";
 
 import { ChangeMapMode } from "./ChangeMapMode";
-import { MapContainerStyled } from "./styled";
 
 const defaultCenter = { lat: 53.35, lng: -6.26 };
 const defaultOptions = {

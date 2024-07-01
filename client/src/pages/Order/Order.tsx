@@ -1,5 +1,6 @@
-import { OrderSection } from "components/OrderSection";
 import { ContainerStyled } from "styled";
+
+import { OrderSection } from "components/OrderSection";
 
 export const Order = () => {
   return (

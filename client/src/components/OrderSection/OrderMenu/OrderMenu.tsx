@@ -1,10 +1,11 @@
 import React from "react";
 
+import { OrderMenuButtonsGroup, OrderMenuItemsGroup, OrderMenuStyled } from "./styled";
+
 import { ButtonComponent } from "components/ui";
 import { AutocompleteComponent } from "components/ui/Autocomplete";
-import type { OrderMenuProps } from "types";
 
-import { OrderMenuButtonsGroup, OrderMenuItemsGroup, OrderMenuStyled } from "./styled";
+import type { OrderMenuProps } from "types";
 
 export const OrderMenu: React.FC<OrderMenuProps> = ({
   originRef,

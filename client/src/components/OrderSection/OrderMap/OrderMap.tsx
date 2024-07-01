@@ -8,8 +8,8 @@ import { type MapProps } from "types";
 import { ChangeMapMode } from "./ChangeMapMode";
 import { MapContainerStyled } from "./styled";
 
-const center = { lat: 53.35, lng: -6.26 };
-const options = {
+const defaultCenter = { lat: 53.35, lng: -6.26 };
+const defaultOptions = {
   disableDefaultUI: true,
   keyboardShortcuts: false,
   clickableIcons: false
@@ -22,9 +22,11 @@ export const OrderMap: React.FC<MapProps> = ({
   toggleMode,
   directionsResponse
 }) => {
-  // todo: analyze, type this
-  // const mapRef = useRef<GoogleMap>();
-  // const onLoad = useCallback((map) => (mapRef.current = map), []);
+  // todo: use later
+  // const mapRef = useRef<google.maps.Map | null>(null);
+  // const onLoad = useCallback((map: google.maps.Map) => {
+  //   mapRef.current = map;
+  // }, []);
 
   const OnMapClick = useCallback(
     (location: google.maps.MapMouseEvent) => {
@@ -42,9 +44,9 @@ export const OrderMap: React.FC<MapProps> = ({
       <ChangeMapMode mode={mode} toggleMode={toggleMode} />
       <GoogleMap
         zoom={11}
-        center={center}
+        center={defaultCenter}
         mapContainerStyle={{ height: "70vh" }}
-        options={options}
+        options={defaultOptions}
         onClick={OnMapClick}>
         {/* onLoad={onLoad} */}
         {markers.map((position) => (

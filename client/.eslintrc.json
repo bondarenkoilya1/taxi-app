@@ -34,7 +34,30 @@
     "simple-import-sort/imports": [
       "error",
       {
-        "groups": [["^react"], ["^antd"], ["^@?\\w"], ["@/(.*)"], ["^[./]"]]
+        "groups": [
+          // Packages `react` related packages come first.
+          ["^react", "^\\w"],
+          // Imports starting with `@`
+          ["^@"],
+          // Pages and utils folders
+          ["./styled", "^styled(/.*|$)"],
+          ["^themes(/.*|$)"],
+          ["^layout(/.*|$)"],
+          ["^pages(/.*|$)"],
+          ["^config(/.*|$)"],
+          ["^constants(/.*|$)"],
+          ["^components(/.*|$)"],
+          ["^types", "^types(/.*|$)"],
+          ["^utils(/.*|$)"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Parent imports, put `..` last.
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          // Other relative imports, put same-folder imports and `.` last.
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Style imports.
+          ["^.+\\.?(css)$"]
+        ]
       }
     ],
     "react/react-in-jsx-scope": "off"

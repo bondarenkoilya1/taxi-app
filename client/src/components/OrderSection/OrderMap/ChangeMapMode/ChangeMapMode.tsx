@@ -1,13 +1,14 @@
 import React from "react";
 
-import { MAP_MODES } from "constants/index.ts";
-import type { ChangeMapModeProps } from "types/Map";
-
 import {
   ChangeMapModeButtonStyled,
   ChangeMapModeCheckboxStyled,
   ChangeMapModeContainerStyled
 } from "./styled";
+
+import { MAP_MODES } from "constants/index.ts";
+
+import type { ChangeMapModeProps } from "types/Map";
 
 export const ChangeMapMode: React.FC<ChangeMapModeProps> = ({ mode, toggleMode }) => {
   return (

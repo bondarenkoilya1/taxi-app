@@ -1,14 +1,19 @@
 import { useCallback, useRef, useState } from "react";
 
 import { Libraries, useJsApiLoader } from "@react-google-maps/api";
+
+import { OrderSectionStyled, OrderSectionWrapper } from "./styled";
+
 import { GOOGLE_MAP } from "config";
+
 import { MAP_MODES } from "constants";
+
 import type { MapModeValues } from "types/Map";
 import type { Coordinates } from "types/MarkerProps";
+
 import { getTravelMode } from "utils";
 
 import { OrderMap, OrderMenu } from ".";
-import { OrderSectionStyled, OrderSectionWrapper } from "./styled";
 
 const libraries: Libraries = ["places"];
 

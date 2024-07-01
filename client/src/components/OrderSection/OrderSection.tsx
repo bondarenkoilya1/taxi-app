@@ -21,14 +21,15 @@ export const OrderSection = () => {
   const originRef = useRef<HTMLInputElement>(null);
   const destinationRef = useRef<HTMLInputElement>(null);
 
-  // TODO: Decide is it okay for users to remove markers that way
-  if (markers.length > 2) {
-    markers.shift();
-  }
-
   // todo: Markers don't keep position
   const onMarkerAdd = useCallback((coordinates: Coordinates) => {
-    setMarkers((prevMarkers) => [...prevMarkers, coordinates]);
+    setMarkers((prevMarkers) => {
+      if (prevMarkers.length >= 2) {
+        return [...prevMarkers.slice(1), coordinates];
+      }
+
+      return [...prevMarkers, coordinates];
+    });
   }, []);
 
   const toggleMode = () => {

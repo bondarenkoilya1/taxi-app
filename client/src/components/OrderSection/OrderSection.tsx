@@ -5,6 +5,7 @@ import { GOOGLE_MAP } from "config";
 import { MAP_MODES } from "constants";
 import type { MapModeValues } from "types/Map";
 import type { Coordinates } from "types/MarkerProps";
+import { getTravelMode } from "utils";
 
 import { OrderMap, OrderMenu } from ".";
 import { OrderSectionStyled, OrderSectionWrapper } from "./styled";
@@ -65,7 +66,7 @@ export const OrderSection = () => {
     const result = await directionsService.route({
       origin,
       destination,
-      travelMode: window.google.maps.TravelMode.DRIVING
+      travelMode: getTravelMode()
     });
 
     setDirectionsResponse(result);

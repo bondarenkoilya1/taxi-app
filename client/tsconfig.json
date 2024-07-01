@@ -23,7 +23,8 @@
       "layout/*": ["layout/*"],
       "types/*": ["types/*"],
       "constants/*": ["constants/*"],
-      "themes/*": ["themes/*"]
+      "themes/*": ["themes/*"],
+      "utils/*": ["utils/*"]
     },
 
     /* Linting */

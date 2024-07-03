@@ -7,10 +7,11 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
   color,
   onClick,
   sx,
-  children
+  children,
+  disabled
 }) => {
   return (
-    <Button variant={variant} color={color} onClick={onClick} sx={sx}>
+    <Button variant={variant} color={color} onClick={onClick} sx={sx} disabled={disabled}>
       {children}
     </Button>
   );

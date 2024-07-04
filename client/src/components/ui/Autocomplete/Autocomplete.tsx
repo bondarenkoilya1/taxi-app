@@ -38,12 +38,16 @@ export const AutocompleteComponent: React.FC<AutocompleteProps> = ({
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => setValue(target.value);
 
+  const checkIfOptionEqualToValue = (option: AddressListProps, value: AddressListProps) =>
+    option.key === value.key && option.label === value.label;
+
   return (
     <Autocomplete
       disablePortal
       options={addressList()}
       sx={styles}
       popupIcon={null}
+      isOptionEqualToValue={checkIfOptionEqualToValue}
       renderInput={(params) => (
         <TextField
           {...params}

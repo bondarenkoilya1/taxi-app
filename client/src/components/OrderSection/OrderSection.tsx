@@ -8,8 +8,8 @@ import { GOOGLE_MAP } from "config";
 
 import { MAP_MODES } from "constants";
 
-import type { MapModeValues } from "types/Map";
-import type { Coordinates } from "types/MarkerProps";
+import type { MapModeValues } from "types";
+import type { Coordinates } from "types";
 
 import { getTravelMode } from "utils";
 
@@ -44,6 +44,7 @@ export const OrderSection = () => {
     });
   };
 
+  // todo: define place of this code
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAP.API_KEY,
     id: GOOGLE_MAP.ID,
@@ -54,16 +55,14 @@ export const OrderSection = () => {
     return <div>Loading...</div>;
   }
 
-  // todo: bad code, many ifs
   const setRoute = async () => {
-    if (!originRef.current || !destinationRef.current) {
-      return;
-    }
-
-    const origin = originRef.current.value;
-    const destination = destinationRef.current.value;
+    const origin = originRef?.current?.value || "";
+    const destination = destinationRef?.current?.value || "";
 
     if (!origin || !destination) {
+      const missingRef = !origin ? "Origin" : "Destination";
+      console.error(`${missingRef} reference is missing`);
+
       return;
     }
 
@@ -77,9 +76,9 @@ export const OrderSection = () => {
     setDirectionsResponse(result);
   };
 
-  // todo: bad code, many ifs
   const resetRoute = () => {
     setDirectionsResponse(null);
+
     if (originRef.current) originRef.current.value = "";
     if (destinationRef.current) destinationRef.current.value = "";
   };

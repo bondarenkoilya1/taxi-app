@@ -31,15 +31,17 @@ export const OrderMenu: React.FC<OrderMenuProps> = ({
           <ButtonComponent
             variant="contained"
             color="primary"
+            size="medium"
             onClick={setRoute}
-            sx={{ width: "56%" }}>
+            styles={{ width: "56%" }}>
             Set the route
           </ButtonComponent>
           <ButtonComponent
             variant="outlined"
             color="secondary"
+            size="medium"
             onClick={resetRoute}
-            sx={{ width: "40%" }}>
+            styles={{ width: "40%" }}>
             Reset the route
           </ButtonComponent>
         </OrderMenuButtonsGroup>

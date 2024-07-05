@@ -1,17 +1,26 @@
 import React from "react";
 
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button from "@mui/material/Button";
+
+import type { ButtonProps } from "types/Button.ts";
 
 export const ButtonComponent: React.FC<ButtonProps> = ({
   variant,
   color,
+  size,
   onClick,
-  sx,
+  styles,
   children,
   disabled
 }) => {
   return (
-    <Button variant={variant} color={color} onClick={onClick} sx={sx} disabled={disabled}>
+    <Button
+      variant={variant}
+      color={color}
+      size={size}
+      onClick={onClick}
+      sx={styles}
+      disabled={disabled}>
       {children}
     </Button>
   );

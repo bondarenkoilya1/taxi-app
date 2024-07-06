@@ -1,5 +1,6 @@
 import { RefObject } from "react";
 
+// todo: get some knowledge about generics and change this to the MUI Autcomplete props
 export type StyleAttributes = {
   [key: string]: number | string;
 };

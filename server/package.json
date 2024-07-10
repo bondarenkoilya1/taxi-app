@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "nodemon index.js",
     "lint": "eslint ./*.js"
   },
   "author": "Ilya Bondarenko",
@@ -11,9 +12,14 @@
   "devDependencies": {
     "@eslint/js": "^9.6.0",
     "eslint": "^9.6.0",
-    "globals": "^15.8.0"
+    "globals": "^15.8.0",
+    "nodemon": "^3.1.4"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "prettier": "^3.3.2"
   }
 }

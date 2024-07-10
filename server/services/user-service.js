@@ -16,7 +16,10 @@ class UserService {
     const activationLink = crypto.randomUUID();
     const user = await UserModel.create({ email, password: hashPassword, activationLink });
 
-    await mailService.sentActivationMail(email, activationLink);
+    await mailService.sentActivationMail(
+      email,
+      `${process.env.API_URL}/api/activate/${activationLink}`
+    );
 
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });

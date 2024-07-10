@@ -2,10 +2,10 @@ const userService = require("../services/user-service");
 const { validationResult } = require("express-validator");
 const ApiError = require("../exceptions/api-error");
 
+const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+
 class UserController {
   async registration(req, res, next) {
-    const THIRTY_DAYS = 30 * 60 * 60 * 1000;
-
     try {
       const errors = validationResult(req);
 
@@ -29,6 +29,16 @@ class UserController {
 
   async login(req, res, next) {
     try {
+      const { email, password } = req.body;
+
+      const userData = await userService.login(email, password);
+
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: THIRTY_DAYS,
+        httpOnly: true
+      });
+
+      return res.json(userData);
     } catch (error) {
       next(error);
     }

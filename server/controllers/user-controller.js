@@ -1,10 +1,18 @@
 const userService = require("../services/user-service");
+const { validationResult } = require("express-validator");
+const ApiError = require("../exceptions/api-error");
 
 class UserController {
   async registration(req, res, next) {
     const THIRTY_DAYS = 30 * 60 * 60 * 1000;
 
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return next(ApiError.BadRequest("Error during validation", errors.array()));
+      }
+
       const { email, password } = req.body;
       const userData = await userService.registration(email, password);
 

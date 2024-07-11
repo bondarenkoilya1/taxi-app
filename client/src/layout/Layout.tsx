@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { Order } from "pages/Order";
+import { Login, Order } from "pages";
 
 export const Layout = () => {
   return (
@@ -8,6 +8,7 @@ export const Layout = () => {
       {/* As long as there is no home page */}
       <Route index element={<Navigate to="/online-order" replace />} />
       <Route path="/online-order" element={<Order />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 };

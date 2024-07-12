@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios";
 
 import type { AuthResponse } from "types/auth";
 
-import { $api } from "../http";
+import { $api } from "http";
 
 export const registration = async (
   email: string,

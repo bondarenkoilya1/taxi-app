@@ -8,7 +8,7 @@ export const Layout = () => {
       {/* As long as there is no home page */}
       <Route index element={<Navigate to="/online-order" replace />} />
       <Route path="/online-order" element={<Order />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/auth" element={<Login />} />
     </Routes>
   );
 };

@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      App: "/src/App.tsx",
       styled: "/src/styled.ts",
       components: "/src/components",
       pages: "/src/pages",
@@ -14,7 +15,10 @@ export default defineConfig({
       types: "/src/types",
       constants: "/src/constants",
       themes: "/src/themes",
-      utils: "/src/utils"
+      utils: "/src/utils",
+      http: "/src/http",
+      services: "/src/services",
+      store: "/src/store"
     }
   }
 });

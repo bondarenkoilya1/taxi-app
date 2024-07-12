@@ -16,6 +16,7 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": "src",
     "paths": {
+      "App": ["App.tsx"],
       "styled": ["styled.ts"],
       "components/*": ["components/*"],
       "pages/*": ["pages/*"],
@@ -24,7 +25,10 @@
       "types/*": ["types/*"],
       "constants/*": ["constants/*"],
       "themes/*": ["themes/*"],
-      "utils/*": ["utils/*"]
+      "utils/*": ["utils/*"],
+      "http/*": ["http/*"],
+      "services/*": ["services/*"],
+      "store/*": ["store/*"]
     },
 
     /* Linting */

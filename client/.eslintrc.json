@@ -39,6 +39,7 @@
           ["^react", "^\\w"],
           // Imports starting with `@`
           ["^@"],
+          ["App"],
           // Pages and utils folders
           ["./styled", "^styled(/.*|$)"],
           ["^themes(/.*|$)"],
@@ -49,6 +50,9 @@
           ["^components(/.*|$)"],
           ["^types", "^types(/.*|$)"],
           ["^utils(/.*|$)"],
+          ["^http(/.*|$)"],
+          ["^services(/.*|$)"],
+          ["^store(/.*|$)"],
           // Side effect imports.
           ["^\\u0000"],
           // Parent imports, put `..` last.

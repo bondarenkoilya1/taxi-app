@@ -5,80 +5,80 @@ const ApiError = require("../exceptions/api-error");
 const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
 
 class UserController {
-  async registration(req, res, next) {
+  async registration(request, response, next) {
     try {
-      const errors = validationResult(req);
+      const errors = validationResult(request);
 
       if (!errors.isEmpty()) {
-        return next(ApiError.BadRequest("Error during validation", errors.array()));
+        return next(ApiError.Badrequestuest("Error during validation", errors.array()));
       }
 
-      const { email, password } = req.body;
+      const { email, password } = request.body;
       const userData = await userService.registration(email, password);
 
-      res.cookie("refreshToken", userData.refreshToken, {
+      response.cookie("refreshToken", userData.refreshToken, {
         maxAge: THIRTY_DAYS,
         httpOnly: true
       });
 
-      return res.json(userData);
+      return response.json(userData);
     } catch (error) {
       next(error);
     }
   }
 
-  async login(req, res, next) {
+  async login(request, response, next) {
     try {
-      const { email, password } = req.body;
+      const { email, password } = request.body;
 
       const userData = await userService.login(email, password);
 
-      res.cookie("refreshToken", userData.refreshToken, {
+      response.cookie("refreshToken", userData.refreshToken, {
         maxAge: THIRTY_DAYS,
         httpOnly: true
       });
 
-      return res.json(userData);
+      return response.json(userData);
     } catch (error) {
       next(error);
     }
   }
 
-  async logout(req, res, next) {
+  async logout(request, response, next) {
     try {
-      const { refreshToken } = req.cookies;
+      const { refreshToken } = request.cookies;
       const token = await userService.logout(refreshToken);
-      res.clearCookie("refreshToken", token);
+      response.clearCookie("refreshToken", token);
 
-      return res.status(200).send("Logout successful");
+      return response.status(200).send("Logout successful");
     } catch (error) {
       next(error);
     }
   }
 
-  async activate(req, res, next) {
+  async activate(request, response, next) {
     try {
-      const activationLink = req.params.link;
+      const activationLink = request.params.link;
       await userService.activate(activationLink);
 
-      return res.redirect(process.env.CLIENT_URL);
+      return response.redirect(process.env.CLIENT_URL);
     } catch (error) {
       next(error);
     }
   }
 
-  async refresh(req, res, next) {
+  async refresh(request, response, next) {
     try {
-      const { refreshToken } = req.cookies;
+      const { refreshToken } = request.cookies;
 
       const userData = await userService.refresh(refreshToken);
 
-      res.cookie("refreshToken", userData.refreshToken, {
+      response.cookie("refreshToken", userData.refreshToken, {
         maxAge: THIRTY_DAYS,
         httpOnly: true
       });
 
-      return res.json(userData);
+      return response.json(userData);
     } catch (error) {
       next(error);
     }

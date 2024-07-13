@@ -1,9 +1,9 @@
 const ApiError = require("../exceptions/api-error");
 const tokenService = require("../services/token-service");
 
-module.exports = function (req, res, next) {
+module.exports = function (request, response, next) {
   try {
-    const authorizationHeader = req.headers.authorization;
+    const authorizationHeader = request.headers.authorization;
 
     if (!authorizationHeader) {
       return next(ApiError.UnauthorizedError());
@@ -21,7 +21,7 @@ module.exports = function (req, res, next) {
       return next(ApiError.UnauthorizedError());
     }
 
-    req.user = userData;
+    request.user = userData;
     next();
   } catch {
     return next(ApiError.UnauthorizedError());

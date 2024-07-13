@@ -48,6 +48,7 @@
           ["^config(/.*|$)"],
           ["^constants(/.*|$)"],
           ["^components(/.*|$)"],
+          ["^import\\s+type"],
           ["^types", "^types(/.*|$)"],
           ["^utils(/.*|$)"],
           ["^http(/.*|$)"],

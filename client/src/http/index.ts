@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { API_URL } from "config";
+
 import type { AuthResponse } from "types/auth";
 
 export const $api = axios.create({

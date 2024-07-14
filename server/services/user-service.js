@@ -6,22 +6,7 @@ const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-error");
 
 class UserService {
-  async registration(email, password) {
-    const candidate = await UserModel.findOne({ email });
-
-    if (candidate) {
-      throw ApiError.BadRequest(`User with email ${email} already exists`);
-    }
-
-    const hashPassword = await bcrypt.hash(password, 3);
-    const activationLink = crypto.randomUUID();
-    const user = await UserModel.create({ email, password: hashPassword, activationLink });
-
-    await mailService.sentActivationMail(
-      email,
-      `${process.env.API_URL}/api/activate/${activationLink}`
-    );
-
+  async generateAndSaveTokens(user) {
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
@@ -30,6 +15,35 @@ class UserService {
       ...tokens,
       user: userDto
     };
+  }
+
+  async findUserByEmail(email) {
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+      throw ApiError.BadRequest(`User with email ${email} was not found`);
+    }
+
+    return user;
+  }
+
+  generateActivationLink() {
+    return crypto.randomUUID();
+  }
+
+  async registration(email, password) {
+    await this.findUserByEmail(email);
+
+    const hashPassword = await bcrypt.hash(password, 3);
+    const activationLink = this.generateActivationLink();
+    const user = await UserModel.create({ email, password: hashPassword, activationLink });
+
+    await mailService.sentActivationMail(
+      email,
+      `${process.env.API_URL}/api/activate/${activationLink}`
+    );
+
+    return this.generateAndSaveTokens(user);
   }
 
   async activate(activationLink) {
@@ -44,11 +58,7 @@ class UserService {
   }
 
   async login(email, password) {
-    const user = await UserModel.findOne({ email });
-
-    if (!user) {
-      throw ApiError.BadRequest(`User with email ${email} was not found`);
-    }
+    const user = await this.findUserByEmail(email);
 
     const isPassEquals = await bcrypt.compare(password, user.password);
 
@@ -56,14 +66,7 @@ class UserService {
       throw ApiError.BadRequest(`Wrong password`);
     }
 
-    const userDto = new UserDto(user);
-    const tokens = tokenService.generateTokens({ ...userDto });
-    await tokenService.saveToken(userDto.id, tokens.refreshToken);
-
-    return {
-      ...tokens,
-      user: userDto
-    };
+    return this.generateAndSaveTokens(user);
   }
 
   async logout(refreshToken) {
@@ -85,15 +88,8 @@ class UserService {
     }
 
     const user = await UserModel.findById(userData.id);
-    // todo: move to function to avoid repetition
-    const userDto = new UserDto(user);
-    const tokens = tokenService.generateTokens({ ...userDto });
-    await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
-    return {
-      ...tokens,
-      user: userDto
-    };
+    return this.generateAndSaveTokens(user);
   }
 }
 

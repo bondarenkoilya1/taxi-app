@@ -11,6 +11,8 @@ import { defaultTheme } from "themes";
 
 import { Layout } from "layout";
 
+import { Header } from "components";
+
 // todo: move
 import type { State } from "types/store";
 
@@ -32,6 +34,7 @@ const AppComponent = () => {
       <ThemeProvider theme={defaultTheme}>
         <Router>
           <Global styles={GlobalStyle} />
+          <Header />
           <Layout />
         </Router>
       </ThemeProvider>

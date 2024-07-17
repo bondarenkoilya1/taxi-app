@@ -17,11 +17,15 @@ class UserService {
     };
   }
 
-  async findUserByEmail(email) {
+  async findUserByEmail(email, shouldExist = true) {
     const user = await UserModel.findOne({ email });
 
-    if (!user) {
+    if (shouldExist && !user) {
       throw ApiError.BadRequest(`User with email ${email} was not found`);
+    }
+
+    if (!shouldExist && user) {
+      throw ApiError.BadRequest(`User with email ${email} already exists`);
     }
 
     return user;
@@ -32,7 +36,7 @@ class UserService {
   }
 
   async registration(email, password) {
-    await this.findUserByEmail(email);
+    await this.findUserByEmail(email, false);
 
     const hashPassword = await bcrypt.hash(password, 3);
     const activationLink = this.generateActivationLink();
@@ -70,9 +74,7 @@ class UserService {
   }
 
   async logout(refreshToken) {
-    const token = await tokenService.removeToken(refreshToken);
-
-    return token;
+    return await tokenService.removeToken(refreshToken);
   }
 
   async refresh(refreshToken) {

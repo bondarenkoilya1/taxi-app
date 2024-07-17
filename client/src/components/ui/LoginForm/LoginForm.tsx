@@ -69,7 +69,11 @@ const LoginFormComponent: React.FC = () => {
         width: "400px"
       }}>
       <h1 style={{ marginBottom: "10px" }}>Authorized: {store.user.email}</h1>
-      <h3>{store.user.isActivated ? "Account is confirmed" : "Account is not confirmed"}</h3>
+      <h3>
+        {store.user.isActivated
+          ? "Account is confirmed"
+          : "Account is not confirmed. Visit your email"}
+      </h3>
       <form
         style={{
           display: "flex",

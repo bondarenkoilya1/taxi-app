@@ -93,6 +93,26 @@ class UserService {
 
     return this.generateAndSaveTokens(user);
   }
+
+  async resendActivationLink(email) {
+    const user = await this.findUserByEmail(email);
+
+    console.log(user.isActivated);
+
+    if (user.isActivated) {
+      throw ApiError.BadRequest("Account is already activated");
+    }
+
+    const activationLink = this.generateActivationLink();
+    user.activationLink = activationLink;
+
+    await user.save();
+
+    await mailService.sentActivationMail(
+      email,
+      `${process.env.API_URL}/api/activate/${activationLink}`
+    );
+  }
 }
 
 module.exports = new UserService();

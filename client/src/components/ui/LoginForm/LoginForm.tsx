@@ -21,18 +21,7 @@ const LoginFormComponent: React.FC = () => {
           margin: "0 auto",
           width: "400px"
         }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "6px"
-          }}>
-          <h1>Authorize, please</h1>
-          <ButtonComponent color="primary" size="medium" variant="text">
-            Resend verification email
-          </ButtonComponent>
-        </div>
+        <h1 style={{ marginBottom: "10px" }}>Authorize, please</h1>
         <form
           style={{
             display: "flex",
@@ -85,6 +74,15 @@ const LoginFormComponent: React.FC = () => {
           ? "Account is confirmed"
           : "Account is not confirmed. Visit your email"}
       </h3>
+      {!store.user.isActivated && (
+        <ButtonComponent
+          color="primary"
+          size="medium"
+          variant="text"
+          onClick={() => store.resendActivationLink(store.user.email)}>
+          Resend verification email
+        </ButtonComponent>
+      )}
       <form
         style={{
           display: "flex",

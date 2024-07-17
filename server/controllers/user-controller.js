@@ -83,6 +83,18 @@ class UserController {
       next(error);
     }
   }
+
+  async resendActivationLink(request, response, next) {
+    try {
+      const { email } = request.body;
+
+      await userService.resendActivationLink(email);
+
+      return response.status(200).send("The activation link was sent successfully");
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new UserController();

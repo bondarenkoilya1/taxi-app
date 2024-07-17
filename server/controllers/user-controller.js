@@ -10,7 +10,7 @@ class UserController {
       const errors = validationResult(request);
 
       if (!errors.isEmpty()) {
-        return next(ApiError.Badrequestuest("Error during validation", errors.array()));
+        return next(ApiError.BadRequest("Error during validation", errors.array()));
       }
 
       const { email, password } = request.body;

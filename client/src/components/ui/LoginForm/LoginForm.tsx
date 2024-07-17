@@ -21,7 +21,18 @@ const LoginFormComponent: React.FC = () => {
           margin: "0 auto",
           width: "400px"
         }}>
-        <h1 style={{ marginBottom: "10px" }}>Authorize, please</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "6px"
+          }}>
+          <h1>Authorize, please</h1>
+          <ButtonComponent color="primary" size="medium" variant="text">
+            Resend verification email
+          </ButtonComponent>
+        </div>
         <form
           style={{
             display: "flex",

@@ -10,6 +10,11 @@ export const defaultTheme = createTheme({
       defaultProps: {
         disableRipple: true,
         disableElevation: true
+      },
+      styleOverrides: {
+        text: {
+          textTransform: "none"
+        }
       }
     }
   }

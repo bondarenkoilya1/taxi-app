@@ -5,7 +5,7 @@ import { API_URL } from "config";
 
 import type { AuthResponse, User } from "types/auth";
 
-import { login, logout, registration } from "services";
+import { login, logout, registration, resendActivationLink } from "services";
 
 // todo: rewrite to function
 export default class Store {
@@ -83,6 +83,14 @@ export default class Store {
       console.error(error.response?.data?.message);
     } finally {
       this.setLoading(false);
+    }
+  }
+
+  async resendActivationLink(email: string) {
+    try {
+      await resendActivationLink(email);
+    } catch (error) {
+      console.log(error.message);
     }
   }
 }

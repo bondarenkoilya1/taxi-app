@@ -26,6 +26,11 @@ export const GlobalStyle = css`
   .MuiAutocomplete-noOptions {
     display: none;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export const ContainerStyled = styled.div`

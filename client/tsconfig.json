@@ -28,7 +28,8 @@
       "utils/*": ["utils/*"],
       "http/*": ["http/*"],
       "services/*": ["services/*"],
-      "store/*": ["store/*"]
+      "store/*": ["store/*"],
+      "data/*": ["data/*"]
     },
 
     /* Linting */

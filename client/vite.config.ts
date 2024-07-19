@@ -18,7 +18,8 @@ export default defineConfig({
       utils: "/src/utils",
       http: "/src/http",
       services: "/src/services",
-      store: "/src/store"
+      store: "/src/store",
+      data: "/src/data"
     }
   }
 });

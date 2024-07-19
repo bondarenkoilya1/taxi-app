@@ -47,6 +47,7 @@
           ["^pages(/.*|$)"],
           ["^config(/.*|$)"],
           ["^constants(/.*|$)"],
+          ["^data(/.*|$)"],
           ["^components(/.*|$)"],
           ["^import\\s+type"],
           ["^types", "^types(/.*|$)"],

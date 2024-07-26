@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { FormStyled, FormTextStyled, FormTextWrapperStyled } from "../styled";
 
 import { APPLICATION_NAME } from "constants/index.ts";
@@ -11,16 +9,16 @@ export const SuggestRegisterForm = () => {
     <FormStyled>
       <FormTextWrapperStyled>
         <FormTextStyled marginRight>New to {APPLICATION_NAME}?</FormTextStyled>
-        <Link to="/register" style={{ color: "#7792F0" }}>
+        <ButtonComponent color="primary" size="medium" variant="text" href="/register">
           Create an account
-        </Link>
+        </ButtonComponent>
       </FormTextWrapperStyled>
       <ButtonComponent
         color="primary"
         size="medium"
         variant="outlined"
         styles={{ width: "100%", marginTop: "14px" }}>
-        Log In
+        Log In as demo user
       </ButtonComponent>
     </FormStyled>
   );

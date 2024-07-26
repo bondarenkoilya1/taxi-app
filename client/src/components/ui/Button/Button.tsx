@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 
@@ -11,8 +12,25 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
   onClick,
   styles,
   children,
-  disabled
+  disabled,
+  href
 }) => {
+  if (href) {
+    return (
+      <Button
+        component={Link as React.ElementType}
+        to={href}
+        variant={variant}
+        color={color}
+        size={size}
+        onClick={onClick}
+        sx={styles}
+        disabled={disabled}>
+        {children}
+      </Button>
+    );
+  }
+
   return (
     <Button
       variant={variant}

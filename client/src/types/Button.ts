@@ -6,4 +6,5 @@ export type ButtonProps = Omit<MUIButtonProps, "children" | "color" | "size" | "
   size: MUIButtonProps["size"];
   styles?: MUIButtonProps["sx"];
   variant: MUIButtonProps["variant"];
+  href?: string;
 };

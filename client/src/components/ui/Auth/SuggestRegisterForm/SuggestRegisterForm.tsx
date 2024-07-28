@@ -17,7 +17,7 @@ export const SuggestRegisterForm = () => {
         color="primary"
         size="medium"
         variant="outlined"
-        styles={{ width: "100%", marginTop: "14px" }}>
+        styles={{ width: "100%", marginTop: "6px" }}>
         Log In as demo user
       </ButtonComponent>
     </FormStyled>

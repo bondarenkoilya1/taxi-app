@@ -2,7 +2,8 @@ import React, { ChangeEvent } from "react";
 import usePlacesAutocomplete from "use-places-autocomplete";
 
 import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
+
+import { Input } from "components";
 
 import type { AddressListProps, AutocompleteProps } from "types";
 
@@ -49,7 +50,7 @@ export const AutocompleteComponent: React.FC<AutocompleteProps> = ({
       popupIcon={null}
       isOptionEqualToValue={checkIfOptionEqualToValue}
       renderInput={(params) => (
-        <TextField
+        <Input
           {...params}
           value={value}
           onChange={handleInputChange}

@@ -15,15 +15,13 @@ const activeStyle = {
 const renderNavbarList = (array: navbarRoutes[]) => {
   return (
     <NavbarListStyled>
-      {array.map(({ url, name }) => {
-        return (
-          <NavbarListItemStyled key={crypto.randomUUID()}>
-            <NavLink to={url} style={({ isActive }) => (isActive ? activeStyle : undefined)}>
-              {name}
-            </NavLink>
-          </NavbarListItemStyled>
-        );
-      })}
+      {array.map(({ url, name }) => (
+        <NavbarListItemStyled key={crypto.randomUUID()}>
+          <NavLink to={url} style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+            {name}
+          </NavLink>
+        </NavbarListItemStyled>
+      ))}
     </NavbarListStyled>
   );
 };

@@ -1,27 +1,22 @@
 import styled from "@emotion/styled";
 
-import type { FormTextProps } from "types";
+import type { FormStyles, FormTextProps } from "types";
 
-export const FormStyled = styled.form`
+export const FormStyled = styled.form<FormStyles>`
+  ${({ formStyle }) => formStyle === "primary" && "padding: 40px;"}
+  ${({ formStyle }) => formStyle === "secondary" && "padding: 20px 40px;"}
   background-color: #f7fafd;
   border: 1px solid #bec3cb;
-  padding: 20px 40px;
   border-radius: 6px;
+  // todo: set width for parent component
+  max-width: 500px;
+  margin: 0 auto;
 `;
 
-export const FormTextStyled = styled.div`
+export const FormTextStyled = styled.div<FormTextProps>`
+  ${({ centered }) => centered && "display: flex; justify-content: center;"};
+  ${({ marginRight }) => marginRight && "margin-right: 6px;"}
   color: #a3a3a3;
-  ${(props: FormTextProps) =>
-    props.centered &&
-    `
-      display: flex;
-      justify-content: center;
-    `};
-  ${(props: FormTextProps) =>
-    props.marginRight &&
-    `
-    margin-right: 6px;
-  `}
 `;
 
 export const FormTextWrapperStyled = styled.div`

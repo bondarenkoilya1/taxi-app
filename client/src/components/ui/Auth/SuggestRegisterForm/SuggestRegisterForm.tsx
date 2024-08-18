@@ -6,7 +6,7 @@ import { ButtonComponent } from "components/ui";
 
 export const SuggestRegisterForm = () => {
   return (
-    <FormStyled>
+    <FormStyled formStyle="secondary">
       <FormTextWrapperStyled>
         <FormTextStyled marginRight>New to {APPLICATION_NAME}?</FormTextStyled>
         <ButtonComponent color="primary" size="medium" variant="text" href="/register">

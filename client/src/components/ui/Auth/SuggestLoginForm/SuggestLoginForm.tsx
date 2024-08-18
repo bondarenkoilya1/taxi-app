@@ -4,7 +4,7 @@ import { ButtonComponent } from "components/ui";
 
 export const SuggestLoginForm = () => {
   return (
-    <FormStyled>
+    <FormStyled formStyle="secondary">
       <FormTextStyled centered>Already have an account?</FormTextStyled>
       <ButtonComponent
         color="primary"

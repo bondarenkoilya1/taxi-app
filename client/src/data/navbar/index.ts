@@ -3,4 +3,7 @@ export const navbarPagesRoutes = [
   { url: "/online-order", name: "Order online" }
 ];
 
-export const navbarFunctionsRoutes = [{ url: "/auth", name: "Log in" }];
+export const navbarFunctionsRoutes = [
+  { url: "/login", name: "Log in" },
+  { url: "/register", name: "Create an account" }
+];

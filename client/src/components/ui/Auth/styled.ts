@@ -24,3 +24,10 @@ export const FormTextWrapperStyled = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const FormTitleStyled = styled.h1`
+  text-align: center;
+  font-size: 24px;
+  // remove
+  margin-bottom: 40px;
+`;

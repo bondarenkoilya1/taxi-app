@@ -1,11 +1,11 @@
 import { ContainerStyled } from "styled";
 
-import { LoginForm } from "components";
+import { AuthForm } from "components";
 
 export const Login = () => {
   return (
     <ContainerStyled>
-      <LoginForm />
+      <AuthForm formType="login" />
     </ContainerStyled>
   );
 };

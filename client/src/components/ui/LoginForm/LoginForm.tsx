@@ -1,3 +1,7 @@
+// component is not used
+// will be deleted after creation of refactored version
+// AuthForm.tsx is a new version of this component
+
 import React, { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 

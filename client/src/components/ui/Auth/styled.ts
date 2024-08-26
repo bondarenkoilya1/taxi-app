@@ -28,6 +28,6 @@ export const FormTextWrapperStyled = styled.div`
 export const FormTitleStyled = styled.h1`
   text-align: center;
   font-size: 24px;
-  // remove
+  // todo: set for parent component
   margin-bottom: 40px;
 `;

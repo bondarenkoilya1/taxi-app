@@ -26,7 +26,7 @@ export const OrderMap: React.FC<MapProps> = ({
   toggleMode,
   directionsResponse
 }) => {
-  // todo: use later
+  // todo: discover about google maps api and maybe use later
   // const mapRef = useRef<google.maps.Map | null>(null);
   // const onLoad = useCallback((map: google.maps.Map) => {
   //   mapRef.current = map;

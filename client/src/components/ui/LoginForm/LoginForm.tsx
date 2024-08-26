@@ -1,6 +1,7 @@
-// component is not used
-// will be deleted after creation of refactored version
-// AuthForm.tsx is a new version of this component
+/* This component deprecated and not used anywhere
+It will be deleted after completion of refactored version
+AuthForm.tsx is a new version of this component
+ */
 
 import React, { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
@@ -12,7 +13,6 @@ import { Context } from "App";
 import { ButtonComponent } from "components/ui";
 
 const LoginFormComponent: React.FC = () => {
-  // todo: move later
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { store } = useContext(Context);

@@ -13,7 +13,7 @@ import { Layout } from "layout";
 
 import { Header } from "components";
 
-// todo: move
+// todo: organize code
 import type { State } from "types/store";
 
 import Store from "./store";

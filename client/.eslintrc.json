@@ -54,7 +54,9 @@
           ["^utils(/.*|$)"],
           ["^http(/.*|$)"],
           ["^services(/.*|$)"],
+          // todo: remove later
           ["^store(/.*|$)"],
+          ["^state(/.*|$)"],
           // Side effect imports.
           ["^\\u0000"],
           // Parent imports, put `..` last.

@@ -18,8 +18,10 @@ export default defineConfig({
       utils: "/src/utils",
       http: "/src/http",
       services: "/src/services",
+      // todo: remove later
       store: "/src/store",
-      data: "/src/data"
+      data: "/src/data",
+      state: "/src/state"
     }
   }
 });

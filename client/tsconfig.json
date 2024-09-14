@@ -28,8 +28,10 @@
       "utils/*": ["utils/*"],
       "http/*": ["http/*"],
       "services/*": ["services/*"],
+      // todo: remove later
       "store/*": ["store/*"],
-      "data/*": ["data/*"]
+      "data/*": ["data/*"],
+      "state/*": ["state/*"]
     },
 
     /* Linting */

@@ -1,9 +1,11 @@
-import axios from "axios";
+import axios, { type AxiosError } from "axios";
 import { makeAutoObservable } from "mobx";
 
 import { API_URL } from "config";
 
 import type { AuthResponse, User } from "types/auth";
+
+import { returnTypedError } from "utils";
 
 import { login, logout, registration, resendActivationLink } from "services";
 
@@ -38,7 +40,8 @@ export default class Store {
       this.setAuth(true);
       this.setUser(response.data.user);
     } catch (error) {
-      console.error(error.response?.data?.message);
+      const typedError = returnTypedError(error as AxiosError);
+      console.error(typedError.response?.data?.message || "Unexpected error");
     }
   }
 
